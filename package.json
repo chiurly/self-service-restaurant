@@ -1,0 +1,22 @@
+{
+  "name": "self-service-restaurant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiurly/self-service-restaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiurly/self-service-restaurant/issues"
+  },
+  "homepage": "https://github.com/chiurly/self-service-restaurant#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
