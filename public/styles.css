@@ -1,0 +1,27 @@
+h1 {
+    font-size: 200%;
+}
+
+body {
+    background-color: #a52a2a;
+}
+
+.product-container {
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    padding: 10px;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
