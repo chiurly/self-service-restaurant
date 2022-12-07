@@ -1,8 +1,8 @@
 let selectedProductArray = [];
 
-function updateShoppingCartDisplay() {
-    const priceDiv = document.body.querySelector(".price");
-    priceDiv.innerHTML = selectedProductArray.length;
+function updatePriceText() {
+    const priceText = document.body.querySelector(".checkout-button");
+    priceText.innerHTML = selectedProductArray.length + " Apmokėti";
 }
 
 function onProductClick(productDiv, productName) {
@@ -18,7 +18,7 @@ function onProductClick(productDiv, productName) {
         selectedProductArray.push(productName);
     }
 
-    updateShoppingCartDisplay();
+    updatePriceText();
 }
 
 async function loadProducts() {
