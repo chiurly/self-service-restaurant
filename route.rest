@@ -6,7 +6,18 @@ POST http://localhost:3000/products
 content-type: application/json
 
 {
-    "name": "Didelis kebabas"
+    "name": "„Coca-Cola“ (355 ml)",
+    "type": "Gėrimas",
+    "price": 1.5
+}
+
+###
+
+PATCH http://localhost:3000/products/6390f02ea007689bcc125b6e
+content-type: application/json
+
+{
+    "name": "„Coca-Cola“ (355 ml)"
 }
 
 ###

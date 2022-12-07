@@ -32,11 +32,31 @@ router.get('/:id', getProduct, (request, response) => {
 
 router.post('/', async (request, response) => {
   const product = new Product({
-    name: request.body.name
+    name: request.body.name,
+    type: request.body.type,
+    price: request.body.price
   });
   try {
     const newProduct = await product.save();
     response.status(201).json(newProduct);
+  } catch (error) {
+    response.status(400).json({ message: error.message });
+  }
+});
+
+router.patch('/:id', getProduct, async (request, response) => {
+  if (request.body.name != null) {
+    response.product.name = request.body.name;
+  }
+  if (request.body.type != null) {
+    response.product.type = request.body.type;
+  }
+  if (request.body.price != null) {
+    response.product.price = request.body.price;
+  }
+  try {
+    const updatedProduct = await response.product.save();
+    response.json(updatedProduct);
   } catch (error) {
     response.status(400).json({ message: error.message });
   }
