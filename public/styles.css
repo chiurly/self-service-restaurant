@@ -6,7 +6,7 @@ body {
     background-color: #a52a2a;
 }
 
-.product-container {
+.product-list {
     display: grid;
     text-align: center;
     grid-template-columns: 1fr 1fr 1fr;
