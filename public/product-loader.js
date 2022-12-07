@@ -1,9 +1,24 @@
+let selectedProductArray = [];
+
+function updateShoppingCartDisplay() {
+    const priceDiv = document.body.querySelector(".price");
+    priceDiv.innerHTML = selectedProductArray.length;
+}
+
 function onProductClick(productDiv, productName) {
     if (productDiv.className == 'product-selected') {
         productDiv.className = 'product';
+        const index = selectedProductArray.indexOf(productName);
+
+        if (index > -1) {
+            selectedProductArray.splice(index, 1);
+        }
     } else {
         productDiv.className = 'product-selected';
+        selectedProductArray.push(productName);
     }
+
+    updateShoppingCartDisplay();
 }
 
 async function loadProducts() {
@@ -21,7 +36,9 @@ async function loadProducts() {
         image.src = '/images/' + productName + '.png';
         image.style.maxWidth = '256px';
         image.style.maxHeight = '256px';
-        image.addEventListener('click', function() { onProductClick(productDiv, productName) } );
+        image.setAttribute('draggable', false);
+        image.style.userSelect = 'none';
+        productDiv.addEventListener('click', function() { onProductClick(productDiv, productName) } );
         productDiv.appendChild(image);
         productListDiv.appendChild(productDiv);
     }
