@@ -1,8 +1,8 @@
-GET http://localhost:3000/products
+GET http://localhost:3000/api/products
 
 ###
 
-POST http://localhost:3000/products
+POST http://localhost:3000/api/products
 content-type: application/json
 
 {
@@ -13,7 +13,7 @@ content-type: application/json
 
 ###
 
-PATCH http://localhost:3000/products/6390f02ea007689bcc125b6e
+PATCH http://localhost:3000/api/products/6390f02ea007689bcc125b6e
 content-type: application/json
 
 {
@@ -22,4 +22,4 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/products/6390e68a8a0ed484b2951e37
+DELETE http://localhost:3000/api/products/6390e68a8a0ed484b2951e37

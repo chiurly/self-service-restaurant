@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
-import productsRouter from './routes/products.js';
+import productsRouter from './routes/api/products.js';
 
 dotenv.config();
 
@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/products', productsRouter);
+app.use('/api/products', productsRouter);
 
 app.get('/', (request, response) => {
   response.sendFile('public/html/index.html', { root: '.' });
