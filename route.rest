@@ -13,11 +13,11 @@ content-type: application/json
 
 ###
 
-PATCH http://localhost:3000/api/products/6390f02ea007689bcc125b6e
+PATCH http://localhost:3000/api/products/6390eb1ddf9e1052c0803544
 content-type: application/json
 
 {
-    "name": "„Coca-Cola“ (355 ml)"
+    "image": "kebab"
 }
 
 ###
