@@ -1,9 +1,7 @@
 # Self-Service Restaurant
 ## Installation
-In the root directory create a file named `.env` containing:
-```
-DB_URL=mongodb+srv://<username>:<password>@selfservicerestaurantcl.s0ahccw.mongodb.net/?retryWrites=true&w=majority
-```
 Run `npm install` to install dependencies
+
+In the root directory create a file named `.env` and set its contents to `DB_URI=<uri>` (replace `<uri>` with your connection string from MongoDB)
 
 Run `npm start` to initiate the server
