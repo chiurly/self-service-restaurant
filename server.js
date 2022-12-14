@@ -9,7 +9,7 @@ import productsRouter from './routes/api/products.js';
 dotenv.config();
 
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.DB_URL);
+mongoose.connect(process.env.DB_URI);
 
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));

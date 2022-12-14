@@ -112,3 +112,13 @@ body {
 .checkout img {
     padding: 10px;
 }
+
+.checkout
+{
+    text-align: right;
+    float: right;
+    margin-right: 10px;
+    position: fixed; /* Change if want it to scroll */
+    bottom: 1rem;
+    right: 5%;
+}
