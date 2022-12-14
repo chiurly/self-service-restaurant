@@ -25,9 +25,7 @@ async function loadProducts() {
     const response = await fetch('/api/products');
     const productList = await response.json();
     const productListDiv = document.body.querySelector(".product-list");
-
-    console.log(productList);
-
+    
     for (const index in productList) {
         const productName = productList[index].name;
         const imageName = productList[index].image;
