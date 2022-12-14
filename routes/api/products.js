@@ -34,7 +34,8 @@ router.post('/', async (request, response) => {
   const product = new Product({
     name: request.body.name,
     type: request.body.type,
-    price: request.body.price
+    price: request.body.price,
+    image: request.body.image
   });
   try {
     const newProduct = await product.save();
@@ -53,6 +54,9 @@ router.patch('/:id', getProduct, async (request, response) => {
   }
   if (request.body.price != null) {
     response.product.price = request.body.price;
+  }
+  if (request.body.image != null) {
+    response.product.image = request.body.image;
   }
   try {
     const updatedProduct = await response.product.save();
