@@ -22,18 +22,21 @@ function onProductClick(productDiv, productName) {
 }
 
 async function loadProducts() {
-    const response = await fetch('/products');
-    const data = await response.json();
-    const productList = data.products;
+    const response = await fetch('/api/products');
+    const productList = await response.json();
+    //const productList = productList.products;
     const productListDiv = document.body.querySelector(".product-list");
 
+    console.log(productList);
+
     for (const index in productList) {
-        const productName = productList[index];
+        //const productName = productList[index];
+        const productName = productList[index].name;
         let productDiv = document.createElement('div');
         productDiv.className = 'product';
         let image = document.createElement('img');
         image.alt = productName;
-        image.src = '/images/' + productName + '.png';
+        image.src = './public/img/' + productName + '.png';
         image.style.maxWidth = '256px';
         image.style.maxHeight = '256px';
         image.setAttribute('draggable', false);
