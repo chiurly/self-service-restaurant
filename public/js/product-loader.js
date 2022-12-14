@@ -32,10 +32,9 @@ async function loadProducts() {
         const productName = productList[index].name;
         const imageName = productList[index].image;
 
-        console.log(imageName);
-
         let productDiv = document.createElement('div');
         productDiv.className = 'product';
+
         let image = document.createElement('img');
         image.alt = productName;
         image.src = './img/' + imageName + '.png';
@@ -43,6 +42,7 @@ async function loadProducts() {
         image.style.maxHeight = '256px';
         image.setAttribute('draggable', false);
         image.style.userSelect = 'none';
+        
         productDiv.addEventListener('click', function() { onProductClick(productDiv, productName) } );
         productDiv.appendChild(image);
         productListDiv.appendChild(productDiv);
