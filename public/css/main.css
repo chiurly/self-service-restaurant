@@ -171,3 +171,12 @@ body {
 .category li:hover{
     background-color: #e0fafa;
 }
+
+.selected-products {
+    text-align: left;
+    float: left;
+    margin-left: 10px;
+    position: fixed;
+    bottom: 1rem;
+    left: 20%;
+}
