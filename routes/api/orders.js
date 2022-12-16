@@ -26,13 +26,24 @@ router.get('/', async (request, response) => {
 	}
 });
 
+router.get('/incomplete', async (request, response) => {
+	try {
+		const incompleteOrders = await Order.find({
+			dateCompleted: null
+		});
+		response.json(incompleteOrders);
+	} catch (error) {
+		response.status(500).json({ message: error.message });
+	}
+});
+
 router.get('/:id', getOrder, (request, response) => {
 	response.json(response.order);
 });
 
 router.post('/', async (request, response) => {
 	const order = new Order({
-		products: [request.body.products]
+		products: request.body.products
 	});
 	try {
 		const newOrder = await order.save();

@@ -5,6 +5,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import productsRouter from './routes/api/products.js';
+import ordersRouter from './routes/api/orders.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/api/products', productsRouter);
+app.use('/api/orders', ordersRouter);
 
 app.get('/', (request, response) => {
   response.sendFile('public/html/index.html', { root: '.' });
