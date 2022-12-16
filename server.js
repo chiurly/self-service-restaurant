@@ -27,4 +27,8 @@ app.get('/', (request, response) => {
   response.sendFile('public/html/index.html', { root: '.' });
 });
 
+app.get('/orders', (request, response) => {
+  response.sendFile('public/html/orders.html', { root: '.' });
+});
+
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
