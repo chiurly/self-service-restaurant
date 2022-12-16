@@ -11,27 +11,40 @@ function getTotalCost() {
     return sum;
 }
 
+function getIdArrayFromSelectedObjects() {
+    let idArray = [];
+
+    for (index in selectedProductArray) {
+        const productObject =  selectedProductArray[index];
+        idArray.push(productObject._id);
+    }
+
+    return idArray;
+}
+
 function updatePriceText() {
     const priceText = document.body.querySelector(".checkout-button");
     priceText.innerHTML = getTotalCost() + " € Apmokėti";
 }
 
 function sendOrder() {
-    const jsonString = JSON.stringify({ products: selectedProductArray })
-    //var xhr = new XMLHttpRequest();
-    //xhr.open("POST", '/api/orders', true);
-   // xhr.setRequestHeader('Content-Type', 'application/json');
-    // xhr.send(JSON.stringify({
-    //     selectedProductArray
-    // }));
-
-    console.log(jsonString);
+    const jsonString = JSON.stringify({ products: getIdArrayFromSelectedObjects() })
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", '/api/orders', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(jsonString);
 }
 
-async function getOrders() {
-    const response = await fetch('/api/orders');
-    const orders = await response.json();
-    return orders;
+function resetToDefaultState() {
+    const productListDiv = document.body.querySelector(".product-list");
+    const productDivs = productListDiv.children;
+
+    for (const index in productDivs) {
+        productDivs[index].className = 'product';
+    }
+    
+    selectedProductArray = [];
+    updatePriceText();
 }
 
 function onProductClick(productDiv, productObject) {
@@ -52,6 +65,7 @@ function onProductClick(productDiv, productObject) {
 
 function onCheckoutClick() {
     sendOrder();
+    resetToDefaultState();
 }
 
 async function loadProducts() {
@@ -84,9 +98,6 @@ async function loadProducts() {
         productDiv.appendChild(title);
         productListDiv.appendChild(productDiv);
     }
-
-    const orders = await getOrders();
-    console.log(orders)
 }
 
 function enableCheckoutButton() {
