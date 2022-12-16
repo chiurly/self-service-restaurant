@@ -47,20 +47,38 @@ function resetToDefaultState() {
     updatePriceText();
 }
 
-function onProductClick(productDiv, productObject) {
-    if (productDiv.className == 'product-selected') {
-        productDiv.className = 'product';
-        const index = selectedProductArray.indexOf(productObject);
+function removeProduct(selectedProductDiv, productObject) {
+    selectedProductDiv.remove();
+    const index = selectedProductArray.indexOf(productObject);
 
-        if (index > -1) {
-            selectedProductArray.splice(index, 1);
-        }
-    } else {
-        productDiv.className = 'product-selected';
-        selectedProductArray.push(productObject);
+    if (index > -1) {
+        selectedProductArray.splice(index, 1);
     }
 
     updatePriceText();
+}
+
+function addProduct(productObject) {
+    const selectedProductsDiv = document.body.querySelector('.selected-products');
+    let removeButton = document.createElement('button');
+    removeButton.innerText = 'x';    
+    
+    let addedProductDiv = document.createElement('div');
+    addedProductDiv.innerText = productObject.name + ' ' + productObject.price + ' € ';
+    addedProductDiv.appendChild(removeButton);
+    
+    selectedProductsDiv.appendChild(addedProductDiv);
+    selectedProductArray.push(productObject);
+    
+    updatePriceText();
+
+    removeButton.addEventListener('click', function() {
+        removeProduct(addedProductDiv, productObject) 
+    });
+}
+
+function onProductClick(productDiv, productObject) {
+    addProduct(productObject);
 }
 
 function onCheckoutClick() {
@@ -71,7 +89,7 @@ function onCheckoutClick() {
 async function loadProducts() {
     const response = await fetch('/api/products');
     const productList = await response.json();
-    const productListDiv = document.body.querySelector(".product-list");
+    const productListDiv = document.body.querySelector('.product-list');
     
     for (const index in productList) {
         const productObject = productList[index]
