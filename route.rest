@@ -6,7 +6,7 @@ POST http://localhost:3000/api/products
 content-type: application/json
 
 {
-    "name": "„Coca-Cola“ (355 ml)",
+    "name": "„Coca-Cola“ (330 ml)",
     "type": "Gėrimas",
     "price": 1.5
 }
@@ -30,9 +30,9 @@ PATCH http://localhost:3000/api/products/6390f02ea007689bcc125b6e
 content-type: application/json
 
 {
-    "name": "„Coca-Cola“ (330 ml)"
+    "price": 1
 }
 
 ###
 
-DELETE http://localhost:3000/api/orders/639c965152d8c99ca5666bf5
+DELETE http://localhost:3000/api/orders/639c99e059d36fe158f20069
