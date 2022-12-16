@@ -5,7 +5,7 @@ h1 {
 }
 
 body {
-    background-color: #a52a2a;
+    background-color: #e0fbfc;
 }
 
 .product-list {
@@ -35,7 +35,7 @@ body {
 }
 
 
-.product-selected{
+.product-selected {
     display: block;
     align-items: center;
     justify-content: center;
@@ -122,8 +122,7 @@ body {
     padding: 10px;
 }
 
-.checkout
-{
+.checkout {
     text-align: right;
     float: right;
     margin-right: 10px;
@@ -132,7 +131,7 @@ body {
     right: 5%;
 }
 
-.category{
+.category {
     position: fixed;
     top: 0;
     left: 0;
@@ -145,29 +144,29 @@ body {
     padding-top: 20px;
 }
 
-.category h2{
+.category h2 {
     padding-left: 2rem;
     font-family: sans-serif;
 }
 
-.category ul{
+.category ul {
     list-style: none;
 }
 
-.category li{
-    font-size:16px;
-    font-weight:300;
-    text-align:center;
-    position:relative;
-    height:40px;
-    line-height:40px;
-    margin-top:10px;
-    overflow:hidden;
-    width:90%;
-    margin-left:5%;
-    cursor:pointer;
+.category li {
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    overflow: hidden;
+    width: 90%;
+    margin-left: 5%;
+    cursor: pointer;
 }
 
-.category li:hover{
+.category li:hover {
     background-color: #e0fafa;
 }
