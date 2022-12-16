@@ -16,6 +16,24 @@ function updatePriceText() {
     priceText.innerHTML = getTotalCost() + " € Apmokėti";
 }
 
+function sendOrder() {
+    const jsonString = JSON.stringify({ products: selectedProductArray })
+    //var xhr = new XMLHttpRequest();
+    //xhr.open("POST", '/api/orders', true);
+   // xhr.setRequestHeader('Content-Type', 'application/json');
+    // xhr.send(JSON.stringify({
+    //     selectedProductArray
+    // }));
+
+    console.log(jsonString);
+}
+
+async function getOrders() {
+    const response = await fetch('/api/orders');
+    const orders = await response.json();
+    return orders;
+}
+
 function onProductClick(productDiv, productObject) {
     if (productDiv.className == 'product-selected') {
         productDiv.className = 'product';
@@ -30,6 +48,10 @@ function onProductClick(productDiv, productObject) {
     }
 
     updatePriceText();
+}
+
+function onCheckoutClick() {
+    sendOrder();
 }
 
 async function loadProducts() {
@@ -62,7 +84,16 @@ async function loadProducts() {
         productDiv.appendChild(title);
         productListDiv.appendChild(productDiv);
     }
+
+    const orders = await getOrders();
+    console.log(orders)
+}
+
+function enableCheckoutButton() {
+    const checkOutButton = document.body.querySelector('.checkout');
+    checkOutButton.addEventListener('click', onCheckoutClick );
 }
 
 loadProducts();
 updatePriceText();
+enableCheckoutButton();
