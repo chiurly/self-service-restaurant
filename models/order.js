@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
     dateCreated: {
@@ -18,4 +18,4 @@ const orderSchema = new mongoose.Schema({
 
 orderSchema.path('products').validate(value => value.length >= 1, 'must have minimum one product');
 
-export default mongoose.model('Order', orderSchema);
+module.exports = mongoose.model('Order', orderSchema);

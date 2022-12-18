@@ -1,5 +1,5 @@
-import express from 'express';
-import Product from '../../models/product.js';
+const express = require('express');
+const Product = require('../../models/product');
 
 const router = express.Router();
 
@@ -75,4 +75,4 @@ router.delete('/:id', getProduct, async (request, response) => {
   }
 });
 
-export default router;
+module.exports = router;

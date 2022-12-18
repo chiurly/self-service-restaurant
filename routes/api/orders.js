@@ -1,5 +1,5 @@
-import express from 'express';
-import Order from '../../models/order.js';
+const express = require('express');
+const Order = require('../../models/order.js');
 
 const router = express.Router();
 
@@ -43,6 +43,8 @@ router.get('/:id', getOrder, (request, response) => {
 
 router.post('/', async (request, response) => {
 	const order = new Order({
+		products: request.body.dateCreated,
+		dateCompleted: request.body.dateCompleted,
 		products: request.body.products
 	});
 	try {
@@ -80,4 +82,4 @@ router.delete('/:id', getOrder, async (request, response) => {
 	}
 });
 
-export default router;
+module.exports = router;
