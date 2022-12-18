@@ -36,13 +36,12 @@ function sendOrder() {
 }
 
 function resetToDefaultState() {
-    const productListDiv = document.body.querySelector(".product-list");
-    const productDivs = productListDiv.children;
+    const productListDiv = document.body.querySelector(".selected-products");
 
-    for (const index in productDivs) {
-        productDivs[index].className = 'product';
+    while (productListDiv.firstChild) {
+        productListDiv.removeChild(productListDiv.firstChild);
     }
-    
+
     selectedProductArray = [];
     updatePriceText();
 }
