@@ -1,4 +1,4 @@
-const CHECK_TIME = 10000; // miliseconds
+const CHECK_TIME = 5000; // miliseconds
 
 let currentTime = new Date();
 let currentOrder = 1;
