@@ -13,7 +13,7 @@ function notifyOrder() {
     let orderListElement = document.body.querySelector('.ready-orders');
     let listElement = document.createElement('ol');
     listElement.textContent = currentOrder;
-    orderListElement.insertBefore(listElement, listElement.children[0]);
+    orderListElement.insertBefore(listElement, orderListElement.firstChild);
     currentOrder++;
 }
 
