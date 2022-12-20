@@ -55,12 +55,31 @@ async function addOrderToList(orderObject) {
     })
 }
 
+async function addOrderToPendingList(orderObject) {
+    const orderListHtmlElement = document.body.querySelector('.pending-order-list');
+
+    let orderTitle = await getProductsStringFromIdArray(orderObject.products);
+    let listElement = document.createElement('li');
+    listElement.textContent = orderTitle;
+    
+    let toDoButton = document.createElement('button');
+    toDoButton.innerText = 'Vykdyti';
+    listElement.appendChild(toDoButton);
+
+    orderListHtmlElement.appendChild(listElement);
+
+    toDoButton.addEventListener('click', function() { 
+        listElement.remove();
+        addOrderToList(orderObject);
+    })
+}
+
 async function loadOrders() {
     const orders = await getOrders();
     const orderListHtmlElement = document.body.querySelector('.order-list');
 
     for (const index in orders) {
-        addOrderToList(orders[index]);
+        addOrderToPendingList(orders[index]);
     }
 }
 

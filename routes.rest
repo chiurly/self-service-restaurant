@@ -13,7 +13,7 @@ content-type: application/json
 
 ###
 
-GET http://localhost:3000/api/orders
+GET http://localhost:3000/api/orders/000000000000000000000000
 
 ###
 
@@ -35,4 +35,4 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/orders/639c99e059d36fe158f20069
+DELETE http://localhost:3000/api/products/639f72d8211f94a7515c5f50
