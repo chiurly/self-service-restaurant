@@ -36,6 +36,11 @@ app.get('/orders', (request, response) => {
   response.sendFile('public/html/orders.html', { root: '.' });
 });
 
+app.get('/notifier', (request, response) => {
+  response.sendFile('public/html/notifier.html', { root: '.' });
+});
+
+
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 }
