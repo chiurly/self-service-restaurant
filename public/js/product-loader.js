@@ -4,7 +4,7 @@ function getTotalCost() {
     let sum = 0;
 
     for (index in selectedProductArray) {
-        const productObject =  selectedProductArray[index];
+        const productObject = selectedProductArray[index];
         sum += productObject.price;
     }
 
@@ -15,7 +15,7 @@ function getIdArrayFromSelectedObjects() {
     let idArray = [];
 
     for (index in selectedProductArray) {
-        const productObject =  selectedProductArray[index];
+        const productObject = selectedProductArray[index];
         idArray.push(productObject._id);
     }
 
@@ -60,19 +60,19 @@ function removeProduct(selectedProductDiv, productObject) {
 function addProduct(productObject) {
     const selectedProductsDiv = document.body.querySelector('.selected-products');
     let removeButton = document.createElement('button');
-    removeButton.innerText = 'x';    
-    
+    removeButton.innerText = 'x';
+
     let addedProductDiv = document.createElement('div');
     addedProductDiv.innerText = productObject.name + ' ' + productObject.price + ' € ';
     addedProductDiv.appendChild(removeButton);
-    
+
     selectedProductsDiv.appendChild(addedProductDiv);
     selectedProductArray.push(productObject);
-    
+
     updatePriceText();
 
-    removeButton.addEventListener('click', function() {
-        removeProduct(addedProductDiv, productObject) 
+    removeButton.addEventListener('click', function () {
+        removeProduct(addedProductDiv, productObject)
     });
 }
 
@@ -85,11 +85,13 @@ function onCheckoutClick() {
     resetToDefaultState();
 }
 
-async function loadProducts() {
+async function loadProducts(type) {
+    unloadProducts();
     const response = await fetch('/api/products');
-    const productList = await response.json();
+    const jsonList = await response.json();
+    const productList = filterProductList(jsonList, type);
     const productListDiv = document.body.querySelector('.product-list');
-    
+
     for (const index in productList) {
         const productObject = productList[index]
         const productName = productObject.name;
@@ -109,19 +111,67 @@ async function loadProducts() {
 
         let title = document.createElement('p')
         title.textContent = productName + ' ' + productPrice + ' €';
-        
-        productDiv.addEventListener('click', function() { onProductClick(productDiv, productObject) } );
+
+        productDiv.addEventListener('click', function () { onProductClick(productDiv, productObject) });
         productDiv.appendChild(image);
         productDiv.appendChild(title);
         productListDiv.appendChild(productDiv);
     }
 }
 
-function enableCheckoutButton() {
-    const checkOutButton = document.body.querySelector('.checkout');
-    checkOutButton.addEventListener('click', onCheckoutClick );
+function unloadProducts() {
+    const productListDiv = document.body.getElementsByClassName('product');
 }
 
-loadProducts();
+function filterProductList(jsonList, type) {
+    var productList = [];
+
+    for (const index in jsonList) {
+        const productObject = jsonList[index]
+
+        if (productObject.type == type) {
+            productList.push(productObject);
+        }
+    }
+
+    return productList;
+}
+
+function onCategoryClick() {
+    loadProducts("Patiekalas")
+}
+
+function enableCheckoutButton() {
+    const checkOutButton = document.body.querySelector('.checkout');
+    checkOutButton.addEventListener('click', onCheckoutClick);
+}
+
+function enableCategoryVisiButton() {
+    const categoryButton = document.body.querySelector('#c-b-visis');
+    categoryButton.addEventListener('click', onCategoryClick);
+}
+
+function enableCategoryPatiekalaiButton() {
+    const categoryButton = document.body.querySelector('#c-b-patiekalai');
+    categoryButton.addEventListener('click', onCategoryClick);
+}
+
+function enableCategoryDesertaiButton() {
+    const categoryButton = document.body.querySelector('#c-b-desertai');
+    categoryButton.addEventListener('click', onCategoryClick);
+}
+
+function enableCategoryGerimaiButton() {
+    const categoryButton = document.body.querySelector('#c-b-gerimai');
+    categoryButton.addEventListener('click', onCategoryClick);
+}
+
+function enableCategoryButtons() {
+    enableCategoryVisiButton();
+    enableCategoryPatiekalaiButton();
+}
+
+loadProducts("visi");
 updatePriceText();
 enableCheckoutButton();
+enableCategoryButtons();
