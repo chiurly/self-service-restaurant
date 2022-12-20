@@ -1,5 +1,12 @@
 let selectedProductArray = [];
 
+const Categories = {
+    Visi: "Visi",
+    Patiekalas: "Patiekalas",
+    Gerimai: "Gėrimas",
+    Desertai: "Desertas"
+}
+
 function getTotalCost() {
     let sum = 0;
 
@@ -120,11 +127,19 @@ async function loadProducts(type) {
 }
 
 function unloadProducts() {
-    const productListDiv = document.body.getElementsByClassName('product');
+    const productListDiv = document.body.querySelector('.product-list');
+
+    while (productListDiv.firstChild) {
+        productListDiv.removeChild(productListDiv.firstChild);
+    }
 }
 
 function filterProductList(jsonList, type) {
     var productList = [];
+
+    if (type == Categories.Visi) {
+        return jsonList;
+    }
 
     for (const index in jsonList) {
         const productObject = jsonList[index]
@@ -137,8 +152,20 @@ function filterProductList(jsonList, type) {
     return productList;
 }
 
-function onCategoryClick() {
-    loadProducts("Patiekalas")
+function onVisiCategoryClick() {
+    loadProducts(Categories.Visi);
+}
+
+function onPatiekalaiCategoryClick() {
+    loadProducts(Categories.Patiekalas);
+}
+
+function onDesertaiCategoryClick() {
+    loadProducts(Categories.Desertai);
+}
+
+function onGerimaiCategoryClick() {
+    loadProducts(Categories.Gerimai);
 }
 
 function enableCheckoutButton() {
@@ -148,30 +175,32 @@ function enableCheckoutButton() {
 
 function enableCategoryVisiButton() {
     const categoryButton = document.body.querySelector('#c-b-visis');
-    categoryButton.addEventListener('click', onCategoryClick);
+    categoryButton.addEventListener('click', onVisiCategoryClick);
 }
 
 function enableCategoryPatiekalaiButton() {
     const categoryButton = document.body.querySelector('#c-b-patiekalai');
-    categoryButton.addEventListener('click', onCategoryClick);
+    categoryButton.addEventListener('click', onPatiekalaiCategoryClick);
 }
 
 function enableCategoryDesertaiButton() {
     const categoryButton = document.body.querySelector('#c-b-desertai');
-    categoryButton.addEventListener('click', onCategoryClick);
+    categoryButton.addEventListener('click', onDesertaiCategoryClick);
 }
 
 function enableCategoryGerimaiButton() {
     const categoryButton = document.body.querySelector('#c-b-gerimai');
-    categoryButton.addEventListener('click', onCategoryClick);
+    categoryButton.addEventListener('click', onGerimaiCategoryClick);
 }
 
 function enableCategoryButtons() {
     enableCategoryVisiButton();
     enableCategoryPatiekalaiButton();
+    enableCategoryDesertaiButton();
+    enableCategoryGerimaiButton();
 }
 
-loadProducts("visi");
+loadProducts(Categories.Visi);
 updatePriceText();
 enableCheckoutButton();
 enableCategoryButtons();
