@@ -1,3 +1,5 @@
+const CHECK_TIME = 10000; // miliseconds
+
 let currentTime = new Date();
 let currentOrder = 1;
 
@@ -7,8 +9,24 @@ async function getOrders() {
     return orders;
 }
 
-async function checkNewOrders() {
+function notifyOrder() {
+    let orderListElement = document.body.querySelector('.ready-orders');
+    let listElement = document.createElement('ol');
+    listElement.textContent = currentOrder;
+    orderListElement.insertBefore(listElement, listElement.children[0]);
+    currentOrder++;
+}
+
+async function checkForNewOrders() {
     const orders = await getOrders();
     const completedOrders = orders.filter(order => order.dateCompleted != null);
-    console.log(completedOrders);
+    const newOrders = completedOrders.filter(completedOrder => new Date(completedOrder.dateCompleted) >= currentTime);
+
+    for (order in newOrders) {
+        notifyOrder();
+    }
+
+    currentTime = new Date();
 }
+
+setInterval(checkForNewOrders, CHECK_TIME);
