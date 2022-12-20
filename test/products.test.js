@@ -1,5 +1,5 @@
-const request = require('supertest');
-const app = require('../app');
+const request = require('supertest')
+const app = require('../app')
 
 describe('Products API', () => {
 	it('GET /api/products --> products array', () => {
@@ -16,9 +16,9 @@ describe('Products API', () => {
 						price: expect.any(Number),
 						image: expect.any(String)
 					})
-				]));
-			});
-	});
+				]))
+			})
+	})
 
 	it('GET /api/products/:id --> specific product by ID', () => {
 		return request(app)
@@ -34,11 +34,11 @@ describe('Products API', () => {
 						price: expect.any(Number),
 						image: expect.any(String)
 					})
-				);
-			});
-	});
+				)
+			})
+	})
 
 	it('GET /api/products/:id --> 404 if not found', () => {
-		return request(app).get('/api/products/000000000000000000000000').expect(404);
-	});
-});
+		return request(app).get('/api/products/000000000000000000000000').expect(404)
+	})
+})

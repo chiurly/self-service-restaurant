@@ -1,43 +1,43 @@
-const PORT = 3000;
+const PORT = 3000
 
-const dotenv = require('dotenv');
-const path = require('path');
-const express = require('express');
-const mongoose = require('mongoose');
+const dotenv = require('dotenv')
+const path = require('path')
+const express = require('express')
+const mongoose = require('mongoose')
 
-const productsRouter = require('./routes/api/products');
-const ordersRouter = require('./routes/api/orders');
+const productsRouter = require('./routes/api/products')
+const ordersRouter = require('./routes/api/orders')
 
-dotenv.config();
+dotenv.config()
 
-mongoose.set('strictQuery', false);
-mongoose.connect(process.env.DB_URI);
+mongoose.set('strictQuery', false)
+mongoose.connect(process.env.DB_URI)
 
-const db = mongoose.connection;
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Connected to DB'));
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('Connected to DB'))
 
-const app = express();
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+const app = express()
+app.use(express.json())
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/api/products', productsRouter);
-app.use('/api/orders', ordersRouter);
+app.use('/api/products', productsRouter)
+app.use('/api/orders', ordersRouter)
 
 app.get('/', (request, response) => {
-  response.redirect('/products');
-});
+  response.redirect('/products')
+})
 
 app.get('/products', (request, response) => {
-  response.sendFile('public/html/products.html', { root: '.' });
-});
+  response.sendFile('public/html/products.html', { root: '.' })
+})
 
 app.get('/orders', (request, response) => {
-  response.sendFile('public/html/orders.html', { root: '.' });
-});
+  response.sendFile('public/html/orders.html', { root: '.' })
+})
 
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+  app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
 }
 
-module.exports = app;
+module.exports = app

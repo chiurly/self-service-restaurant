@@ -1,5 +1,5 @@
-const request = require('supertest');
-const app = require('../app');
+const request = require('supertest')
+const app = require('../app')
 
 describe('Orders API', () => {
 	it('GET /api/orders --> orders array', () => {
@@ -14,9 +14,9 @@ describe('Orders API', () => {
 						dateCreated: expect.any(String),
 						products: expect.any(Array)
 					})
-				]));
-			});
-	});
+				]))
+			})
+	})
 
 	it('GET /api/orders/:id --> specific order by ID', () => {
 		return request(app)
@@ -30,13 +30,13 @@ describe('Orders API', () => {
 						dateCreated: expect.any(String),
 						products: expect.any(Array)
 					})
-				);
-			});
-	});
+				)
+			})
+	})
 
 	it('GET /api/orders/:id --> 404 if not found', () => {
-		return request(app).get('/api/orders/000000000000000000000000').expect(404);
-	});
+		return request(app).get('/api/orders/000000000000000000000000').expect(404)
+	})
 
 	it('POST /api/orders --> created order', () => {
 		return request(app)
@@ -57,7 +57,7 @@ describe('Orders API', () => {
 							expect.any(String)
 						])
 					})
-				);
-			});
-	});
-});
+				)
+			})
+	})
+})

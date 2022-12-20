@@ -1,3 +1,5 @@
+### "REST Client" extention
+
 GET http://localhost:3000/api/products
 
 ###
@@ -17,20 +19,24 @@ GET http://localhost:3000/api/orders/000000000000000000000000
 
 ###
 
-POST http://localhost:3000/api/orders
+POST http://localhost:3000/api/products
 content-type: application/json
 
 {
-    "products": ["6390e6658a0ed484b2951e35"]
+    "name": "Negazuotas vanduo „Neptūnas“ (0,5 l)",
+    "type": "Gėrimas",
+    "price": 1,
+    "image": "water",
+    "stock": 0
 }
 
 ###
 
-PATCH http://localhost:3000/api/products/6390f02ea007689bcc125b6e
+PATCH http://localhost:3000/api/products/63a1a097e06a787b6c815ec5
 content-type: application/json
 
 {
-    "price": 1
+    "name": "Negazuotas vanduo „Neptūnas“ (0,5 l)"
 }
 
 ###
