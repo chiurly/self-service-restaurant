@@ -1,0 +1,17 @@
+h1 {
+    font-size: 200%;
+    text-align: center;
+    font-family: sans-serif;
+    color: #dbebeb;
+}
+
+ul {
+    font-size: 200%;
+    text-align: center;
+    font-family: sans-serif;
+    color: #dbebeb;
+}
+
+body {
+    background-color: rgba(86, 88, 105);
+}
