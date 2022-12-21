@@ -8,7 +8,7 @@ POST http://localhost:3000/api/products
 content-type: application/json
 
 {
-    "name": "„Coca-Cola“ (330 ml)",
+    "name": "„Coca-Cola“ (0,33 l)",
     "type": "Gėrimas",
     "price": 1.5
 }
@@ -32,11 +32,11 @@ content-type: application/json
 
 ###
 
-PATCH http://localhost:3000/api/products/63a1a097e06a787b6c815ec5
+PATCH http://localhost:3000/api/products/6390f02ea007689bcc125b6e
 content-type: application/json
 
 {
-    "name": "Negazuotas vanduo „Neptūnas“ (0,5 l)"
+    "name": "„Coca-Cola“ (0,33 l)"
 }
 
 ###
